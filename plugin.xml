@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="com.thoughtsmiths.hylips.Page1" name="hyLips" schema="schema/com.thoughtsmiths.hylips.Page1.exsd"/>
+
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            name="Impex Editor"
+            extensions="impex"
+            icon="icons/sample.gif"
+            contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
+            class="com.thoughtsmiths.hylips.editors.ImpexEditor"
+            id="com.thoughtsmiths.hylips.editors.ImpexEditor">
+      </editor>
+   </extension>
+   <extension
+         point="com.thoughtsmiths.hylips.Page1">
+   </extension>
+
+</plugin>
