@@ -21,7 +21,9 @@ import org.eclipse.jface.text.contentassist.IContextInformationValidator;
 public class ImpexModeContentAssitantProcessor implements IContentAssistProcessor{
 
 	private String[] impexModeProposals = new String[] {"INSERT_UPDATE","UPDATE", "INSERT", "REMOVE"};
-	private String[] keywordsProposals = new String[] {""};
+	private String[] keywordsProposals = new String[] {"batchmode", "cacheUnique", "processor", "parallel",
+			"translator", "default", "lang", "unique", "allownull", "ignorenull", "dateformat", "numberformat",
+			"collection-delimiter", "path-delimiter", "key2value-delimiter", "map-delimiter", "mode", "cellDecorator", "virtual", "ignoreKeyCase", "alias", "pos", "forceWrite","true","false"};
 	@Override
 	public ICompletionProposal[] computeCompletionProposals(
 		ITextViewer paramITextViewer, int documentOffset) {
@@ -80,12 +82,12 @@ public class ImpexModeContentAssitantProcessor implements IContentAssistProcesso
 
 	@Override
 	public char[] getCompletionProposalAutoActivationCharacters() {
-		return new char[]{'I','U','R'};
+		return new char[]{'I','U','R','b','c','p','t','d','l','u','a','n','k','m','v','f'};
 	}
 
 	@Override
 	public char[] getContextInformationAutoActivationCharacters() {
-		return new char[]{'I','U','R'};
+		return new char[]{'I','U','R','b','c','p','t','d','l','u','a','n','k','m','v','f'};
 	}
 
 	@Override
