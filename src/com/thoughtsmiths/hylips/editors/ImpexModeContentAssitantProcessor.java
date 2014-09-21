@@ -21,6 +21,9 @@ import org.eclipse.jface.text.contentassist.IContextInformationValidator;
 public class ImpexModeContentAssitantProcessor implements IContentAssistProcessor{
 
 	private String[] impexModeProposals = new String[] {"INSERT_UPDATE","UPDATE", "INSERT", "REMOVE"};
+	private String[] keywordsProposals = new String[] {"batchmode", "cacheUnique", "processor", "parallel",
+			"translator", "default", "lang", "unique", "allownull", "ignorenull", "dateformat", "numberformat",
+			"collection-delimiter", "path-delimiter", "key2value-delimiter", "map-delimiter", "mode", "cellDecorator", "virtual", "ignoreKeyCase", "alias", "pos", "forceWrite","true","false"};
 	@Override
 	public ICompletionProposal[] computeCompletionProposals(
 		ITextViewer paramITextViewer, int documentOffset) {
@@ -33,11 +36,14 @@ public class ImpexModeContentAssitantProcessor implements IContentAssistProcesso
 			final String currentLine = docContent.substring(currentRegion.getOffset(),currentRegion.getOffset()+currentRegion.getLength());
 			final String[] tokens = currentLine.split(" ");
 			final String currentWord = tokens[tokens.length-1];
-			for (String mode : impexModeProposals) {
+			// add impex modes
+			addProposals(impexModeProposals, proposals, currentWord);
+			/*for (String mode : impexModeProposals) {
 				if(mode.toLowerCase().startsWith(currentWord.toLowerCase()))
 					proposals.add(mode);			
-			}
-			
+			}*/
+			//add impex keywrods
+			addProposals(keywordsProposals, proposals, currentWord);
 			if(proposals.size()>0){
 				final ICompletionProposal[] result = new ICompletionProposal[proposals.size()];
 				int count=0;
@@ -55,6 +61,13 @@ public class ImpexModeContentAssitantProcessor implements IContentAssistProcesso
 		}
 	}
 
+	private void addProposals(final String[] inputArray, final List<String> outputArray, final String wordToMatch){
+		for (String keyword : inputArray) {
+			if(keyword.toLowerCase().startsWith(wordToMatch.toLowerCase()))
+				outputArray.add(keyword);							
+		}	
+	}
+	
 	@Override
 	public IContextInformation[] computeContextInformation(
 			ITextViewer paramITextViewer, int paramInt) {
@@ -69,12 +82,12 @@ public class ImpexModeContentAssitantProcessor implements IContentAssistProcesso
 
 	@Override
 	public char[] getCompletionProposalAutoActivationCharacters() {
-		return new char[]{'I','U','R'};
+		return new char[]{'I','U','R','b','c','p','t','d','l','u','a','n','k','m','v','f'};
 	}
 
 	@Override
 	public char[] getContextInformationAutoActivationCharacters() {
-		return new char[]{'I','U','R'};
+		return new char[]{'I','U','R','b','c','p','t','d','l','u','a','n','k','m','v','f'};
 	}
 
 	@Override
