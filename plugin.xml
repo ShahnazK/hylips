@@ -8,7 +8,7 @@
       <editor
             name="Impex Editor"
             extensions="impex"
-            icon="icons/sample.gif"
+            icon="icons/hybris_file_16x16.png"
             contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
             class="com.thoughtsmiths.hylips.editors.ImpexEditor"
             id="com.thoughtsmiths.hylips.editors.ImpexEditor">
